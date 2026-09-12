@@ -44,14 +44,23 @@ LLM_Final_Codes/
 
 ```
 Knowledge Base
-        ↓
-[Approach 1] Precision-Based Approach
-        ↓
-[Approach 2] Coverage-Based Approach (Less Aggressive)
-        ↓
-[Fine-tuning + Post-processing] Answer Verification & Refinement
-        ↓
-Final Answer
+      │
+      ├──────────────→ Approach 1
+      │                 Precision RAG
+      │
+      └──────────────→ Approach 2
+                        Coverage RAG
+                            │
+                            ↓
+                  Fine-tuned Verification
+                            │
+                            ↓
+                    Post-processing
+                     ├─ Approach 1 fallback
+                     └─ DDG retrieval
+                            │
+                            ↓
+                       Final Answer
 ```
 
 ---
@@ -353,7 +362,8 @@ Final Answer
 
 ### **Dataset & Competition**
 
-- **Dataset:** Indic-RAG-Suite (from AI4Bharat)
+- **Dataset:** Indic-RAG-Suite (from AI4Bharat) https://huggingface.co/datasets/ai4bharat/Indic-Rag-Suite
+- **Dataset Subset (Used in the training and testing):** https://www.kaggle.com/code/ratnajitdhar08/creating-dataset-for-ml-contest
 - **Competition:** IEEE CS CUET ML Contest 2.0 - Advanced Track
 - **Paper:** Included in this repository
 
